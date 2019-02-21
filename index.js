@@ -1,7 +1,9 @@
 let xhr = new XMLHttpRequest();
-const url = "https://www.omdbapi.com/?apikey="
+const url = "https://www.omdbapi.com/?apikey=";
 
 let APIKEY = "1bf03af2";
+
+
 
 
 
@@ -20,17 +22,27 @@ function submitTY() {
     
     
     xhr.onreadystatechange = function() {
+        console.log(this.readyState)
     if (this.readyState == 4 && this.status == 200) {
-        displayNicely(this.responseText);
-        
-    }
-    else if (this.status == 404) {
+        if(JSON.parse(this.responseText).Response == "True"){
+            document.getElementById("error").innerHTML = ""
+            document.getElementById("movies").innerHTML = "";
+            displayNicely(this.responseText);
+        } else{
+            console.log('fail')
+            document.getElementById("movies").innerHTML = "";
             document.getElementById("error").innerHTML = "<h2>Movie not found! Please try again.</h2>";
         }
         
-         else {
-           
-            document.getElementById("error").innerHTML = "<h2>Movie not found! Please try again.</h2>";
+        
+        
+    }
+    
+ 
+        
+    else if (this.readyState == 4 && this.status == 404) {
+         document.getElementById("error").innerHTML = "<h2>Movie not found! Please try again.</h2>";
+            
             
         }
 };
@@ -59,12 +71,12 @@ function submitSeries() {
         displaySeries(this.responseText);
     }
     else if (this.status == 404) {
-            document.getElementById("error2").innerHTML = "<h2>Movie not found! Please try again.</h2>";
+            document.getElementById("error2").innerHTML = "<h2>Series not found! Please try again.</h2>";
         }
         
          else {
            
-            document.getElementById("error2").innerHTML = "<h2>Movie not found! Please try again.</h2>";
+            document.getElementById("error2").innerHTML = "<h2>Series not found! Please try again.</h2>";
             
         }
 };
@@ -79,9 +91,13 @@ function displaySeries(apiData) {
     console.log(apiData);
     let series = apiData.Episodes;
     let output = "";
+    let intro = "";
+    
+    intro += `<div class = 'intro col-xs-12 col-md-12 text-center' > <h1>${apiData.Title} Season ${apiData.Season}</h1></div> 
+    <div class = 'intro col-xs-12 col-md-12 text-center' > <h3> Total Seasons ${apiData.totalSeasons} </h3></div> `;
     
     
-       
+      
 
     
     
@@ -89,14 +105,17 @@ function displaySeries(apiData) {
         
        
         
-        output += `<div class = 'col-xs-12 col-sm-6 col-md-3 text-center'>
+        output += `
+        <div class = 'col-xs-12 col-sm-6 col-md-3 text-center'>
         <div class = 'well text-center'>
              <div class="card border-warning mb-3 " style="max-width: 18rem;">
-  <div class="card-header"><strong>Title:</strong> ${series[i].Title}</div>
-  <div class="card-body well text-center">
+    <div class="card-header"><h4>${series[i].Title}</h4></div>
+    <div class="card-body well text-center">
     <h5 class="card-title"> <strong>Episode:</strong> ${series[i].Episode}</h5>
     <p class="card-text"><strong>Released:</strong> ${series[i].Released}</p>
     <p class="card-text"><strong>Rating:</strong> ${series[i].imdbRating}</p>
+    <a href = "http://imdb.com/title/${series[i].imdbID}" target = 'blank' class = 'btn btn-primary'>View IMDB</a>
+    
 
         
         </div>
@@ -118,8 +137,10 @@ function displaySeries(apiData) {
     
     
     
-    
+document.getElementById("intro").innerHTML = intro;    
 document.getElementById("series").innerHTML = output;
+
+
 
 
         
@@ -209,7 +230,10 @@ function displayMovie(movie){
     
     let output = `<div class = 'row'>
     <div class = 'col-md-4'>
+    
+  
     <img src = '${movie.Poster}' alt = 'images/no_image.png' class = 'thumbnail'>
+  
     
         </div>
         <div class = 'col-md-8 ' style = 'text-align:left'>
@@ -220,8 +244,10 @@ function displayMovie(movie){
         <li class = 'list-group-item'><strong>Rated:</strong> ${movie.Rated}</li>
         <li class = 'list-group-item'><strong>ImDB rating:</strong> ${movie.imdbRating}</li>
         <li class = 'list-group-item'><strong>Director:</strong> ${movie.Director}</li>
-        <li class = 'list-group-item'><strong>Writer:</strong> ${movie.writer}</li>
-        <li class = 'list-group-item'><strong>Actors:</strong> ${movie.actors}</li>
+        <li class = 'list-group-item'><strong>Writer:</strong> ${movie.Writer}</li>
+        <li class = 'list-group-item'><strong>Actors:</strong> ${movie.Actors}</li>
+        <li class = 'list-group-item'><strong>Production:</strong> ${movie.Production}</li>
+        <li class = 'list-group-item'><strong>Awards:</strong> ${movie.Awards}</li>
         </div>
         <div class = 'row'>
         <div class = 'col-md-12'>
