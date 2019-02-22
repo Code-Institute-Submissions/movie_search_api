@@ -56,6 +56,7 @@ function submitTY() {
 
 
 
+
 function submitSeries() {
     let Series = document.getElementById("SeriesForm")["Series"].value;
     let Season = document.getElementById("SeriesForm")["Season"].value;
@@ -68,13 +69,15 @@ function submitSeries() {
     
     xhr.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-        displaySeries(this.responseText);
+    if(JSON.parse(this.responseText).Response == "True"){
+            document.getElementById("error2").innerHTML = ""
+            document.getElementById("series").innerHTML = "";
+            displaySeries(this.responseText);
     }
-    else if (this.status == 404) {
-            document.getElementById("error2").innerHTML = "<h2>Series not found! Please try again.</h2>";
-        }
         
-         else {
+     
+        
+    else {
            
             document.getElementById("error2").innerHTML = "<h2>Series not found! Please try again.</h2>";
             
@@ -82,6 +85,10 @@ function submitSeries() {
 };
 
 }
+}
+
+
+
 
 
 
@@ -118,13 +125,14 @@ function displaySeries(apiData) {
     
 
         
-        </div>
+        
         </div>
         
         
    
         
      
+        </div>
         </div>
         </div>
         
@@ -166,7 +174,7 @@ function displayNicely(apiData) {
         <div class = 'well text-center'>
         <img src = "${movies[i].Poster}">
         <h5>${movies[i].Title}</h5>
-        <a onclick = "movieSelected('${movies[i].imdbID}')" class = 'btn btn-primary' href = '#'>Movie Details</a>
+        <a onclick = "movieSelected('${movies[i].imdbID}')" class = 'btn btn-primary' href = '#'>Movie Detail</a>
         
         </div>
         </div>
@@ -256,12 +264,16 @@ function displayMovie(movie){
         </div>
         <div class = 'row'>
         <div class = 'well'>
+        <div class = 'col-sm-12'>
         
         <h3>Plot</h3>
+        <div class = 'col-sm-12'>
+        </div>
         <h5>${movie.Plot}</h5>
         <hr>
         <a href = "http://imdb.com/title/${movie.imdbID}" target = 'blank' class = 'btn btn-primary'>View IMDB</a>
         <a href = "index.html" class = "btn btn-secondary" >Go back to Search</a>
+        </div>
         </div>
         </div>`;
     

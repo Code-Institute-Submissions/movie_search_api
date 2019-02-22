@@ -1,6 +1,8 @@
 ## OMDB API search engine:
+
+Find my site [here](https://caoimhedaly.github.io/movie_search_api/).
   
- <https://jigsaw.w3.org/css-validator/validator>
+[Css validated](https://jigsaw.w3.org/css-validator/validator).
   
   
   
@@ -12,7 +14,7 @@
   
 ## UX:
   
-  The website I developed for movie and tv lovers, to allow them to search for accurate information on their favourite film and tv series, from release date to oscar nominations. It can also be used to browse for those simply looking for movie-night inspiration. 
+  The website I developed for movie and tv series lovers, to allow them to search for accurate information on their favourite film and tv series, from release date to oscar nominations. It can also be used to browse for those simply looking for movie-night inspiration. 
   
   * Patrick 47yrs: Im an avid movie fan. Using the OMDB search engine I am able to search for movies new and old that I have yet to see by title and year. As the IMDB rating and award nominations are also given, I can reliably chose which films I will enjoy.  I particularly like to see the original posters for each movie. 
   
@@ -21,9 +23,9 @@
   
 ***LINK TO WIREFRAME***
 
-Find a link to the large screen wire frame here <https://balsamiq.cloud/s6r726f/pu2bcvm>
+Find a link to the large screen wire frame [here](https://balsamiq.cloud/s6r726f/pu2bcvm)
 
-Find a link to the mobile view wireframe here <https://balsamiq.cloud/s6r726f/pamaugc>  
+Find a link to the mobile view wireframe [here](https://balsamiq.cloud/s6r726f/pamaugc)  
  
 
 ## FEATURES:
@@ -78,40 +80,44 @@ Find a link to the mobile view wireframe here <https://balsamiq.cloud/s6r726f/pa
 ## Sources:
  
  * I followed a youtube tutorial on accessing the OMDB API, <https://www.youtube.com/watch?v=NE2Uf41Z4Cw> . 
+
+ * I used jigsaw css validator to validate my css <https://jigsaw.w3.org/css-validator/>.
  
 
 ## Testing:
  
- * Home Page : 
- ...i.The home page is mobile responsive, the navbar collapses to a dropdown menu accessed via a button button at a width of 990px. 
- ...ii.Some of the images in the gallery are hidden on a small screen.
+ * Movies : 
+ ...i.The home page is a movie search engine. On submitting a title and year into the search form,  a list of movies will display as a gallery below the search engine, if found. 
+ ...ii. The default year is '2019'. It is not possible to enter a letter or symbol into the 'year' input. 
+ ...iii. If a year in the future is entered, the error message 'Movie not found!' will be returned. 
+ ...iv. If the title input is left blank on form submission, an error message will appear. 
+ ...v. You may search for movie by title alone. This will return movie suggestions for all years, beginning with most relevant to title. 
+ ...vi. On clicking the 'clear search' button, all results will clear from the page and the input form will clear. 
+ ...vii. On hovering over each movie poster displayed, the image transitions from an opacity of 0.5 to 1. 
+ ...viii. On mobile view, the navbar collapses to a popcorn navbar-toggler-icon, when clicked drops down to reveal the 'movies' and 'series' links. 
  
- * Most at Risk : 
- ...i. click on the Most at Risk link in the navbar, it takes you to this page. 
- ...ii. On a large screen, when you hover over each image, white text transitions from the left on a semi-transparent background.
- ...iii. On smaller screens, the text 'click image' appears at the bottom left corner of each image to inform you that you must click the image to reveal the text. 
- ...iv. media icons - on hovering over the media icons, a tooltip informs the user that the site is under construction. 
- ...v. On smaller screens, each article of text lays below the respective image. On larger screens the text lays to the right of the image. 
- ...vi. Again the dropdown menu functions as a navbar on smaller screens on this page. 
+ * Movie detail : 
+ ...i. On clicking the 'movie detail' button below any movie poster, the movie_detail page is rendered for the relevant movie. 
+ ...ii. On clicking the 'View IMDB' button, the relevant IMDB page opens in a new window. 
+ ...iii. On clicking the 'back to search' button, the home page is rendered.  
  
- * Save the species : 
-  ...i. click the save the species link in the navbar, this page opens.
-  ...ii. click on each of the links on each card, a modal opens to inform you that the site is under construction. 
-  ...iii. click on the X at the top of the modal box, the modal closes.
-  ...iv. media icons - on hovering over the media icons, a tooltip informs the user that the site is under construction. 
+ 
+ * Series : 
+  ...i.The series page is a movie search engine. On submitting a title and season into the search form,  a list of episodes will display as a gallery below the search engine, if found. 
+ ...ii. If no season is entered, the name of the series and number of seasons will be returned. 
+ ...iii. If an unknown title is entered, an error message will display. 
+ ...iv. If the title input is left blank on form submission, there will be no return. 
+ ...v. On clicking the 'clear search' button, all results will clear from the page and the input form will clear. 
+ ...vi. On mobile view, the navbar collapses to a popcorn navbar-toggler-icon, when clicked drops down to reveal the 'movies' and 'series' links. 
+ ...vii. On clicking the 'view IMDB' button, the relevant IMDB page is rendered in a new window. 
   
- *Contact Us :
- ...i. click on the contact us link in the navbar to open this page. 
- ...ii. form - click the dropdown menu on the form to chose you query
-          - click the submit button and a modal opens to inform the user that this is under construction. 
- ...iii. map - zoom in and out on the map 
- ...iv. media icons - on hovering over the media icons, a tooltip informs the user that the site is under construction. 
- ...v. on smaller screens, the navbar collapses to a dropdown menu. 
- 
- * I used W3 schools css validator with no error found. <https://jigsaw.w3.org/css-validator/validator>
+
  
 
 ## Deployment:
+
+Find my site [here](https://caoimhedaly.github.io/movie_search_api/).
+
 ... I deployed my website through github pages. I did this as follows:
 1. I logged into my github account
 2. I selected my project repository 
